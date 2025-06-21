@@ -1,0 +1,24 @@
+{
+    "name": "forumify/remove-branding-plugin",
+    "description": "Remove the forumify branding from your community's site.",
+    "type": "forumify-plugin",
+    "keywords": ["symfony-ux"],
+    "license": "OSL-3.0",
+    "require": {
+      "forumify/forumify-platform": "^0.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Forumify\\RemoveBranding\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "symfony/flex": false,
+            "symfony/runtime": false
+        }
+    },
+    "extra": {
+        "forumify-plugin-class": "Forumify\\RemoveBranding\\ForumifyRemoveBrandingPlugin"
+    }
+}
