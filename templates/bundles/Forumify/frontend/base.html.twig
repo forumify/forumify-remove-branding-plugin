@@ -1,0 +1,6 @@
+{% extends '!@Forumify/frontend/base.html.twig' %}
+{% block footer %}
+    {% if not plugin_version('forumify/forumify-remove-branding-plugin', 'regular') %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

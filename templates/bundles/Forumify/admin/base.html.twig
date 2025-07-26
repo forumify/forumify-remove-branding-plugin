@@ -1,0 +1,34 @@
+{% extends '!@Forumify/admin/base.html.twig' %}
+{% set logo %}
+    {%- if setting('forumify.logo') -%}
+        {{ asset(setting('forumify.logo'), 'forumify.asset') }}
+    {%- else -%}
+        {{ asset('bundles/forumify/images/forumify.svg') }}
+    {% endif %}
+{% endset %}
+{% set forumTitle = setting('forumify.title') %}
+{% block title %}
+    admin |
+    {% if block('title_page') is not empty %}
+        {% block title_page %}{% endblock %}
+        -
+    {% endif %}
+    {{ forumTitle }}
+{% endblock %}
+{% block favicon %}
+    {% if plugin_version('forumify/forumify-remove-branding-plugin', 'regular') %}
+        <link rel="icon" href="{{ logo }}">
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+{% block navigation_brand %}
+    {% if plugin_version('forumify/forumify-remove-branding-plugin', 'regular') %}
+        <div class="flex items-center navigation-brand">
+            <img class="logo" src="{{ logo }}" alt="logo" style="max-width: 48px;">
+            <span>{{ forumTitle }}</span>
+        </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
